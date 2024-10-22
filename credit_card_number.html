@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credit Card Number</title>
+  </head>
+  <body>
+    <h1>Credit Card Number</h1>
+    <label for="cardNumber">Credit Card Number:</label>
+    <input
+      type="text"
+      id="cardNumber"
+      placeholder="Enter your card number"
+      oninput="updateNumber()"
+    />
+    <br />
+    <br />
+
+    <p id="output"></p>
+
+    <script>
+      function updateNumber() {
+        const cardNumber = document.getElementById("cardNumber").value;
+        const output = document.getElementById("output");
+
+        //Check if the card number is empty
+        if (cardNumber.length == 0) {
+          output.innerText = ""; // Clear output if input is empty
+          return;
+        }
+
+        // Mask all but the late four digits
+        if (cardNumber.length > 4) {
+          const maskedNumber =
+            "*".repeat(cardNumber.length - 4) + cardNumber.slice(-4);
+          output.innerText = maskedNumber;
+        } else {
+          output.innerText = cardNumber;
+        }
+      }
+    </script>
+  </body>
+</html>

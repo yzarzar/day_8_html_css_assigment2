@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Info</title>
+  </head>
+  <body>
+    <h1>User Information</h1>
+    <label for="username">User Name:</label>
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter your name"
+      oninput="updateInfo()"
+    />
+    <br />
+    <br />
+
+    <label for="age">Age</label>
+    <input
+      type="number"
+      id="age"
+      placeholder="Enter your age"
+      oninput="updateInfo()"
+    />
+
+    <p id="output"></p>
+
+    <script>
+        function updateInfo() {
+          const userName = document.getElementById("username").value;
+          const age = document.getElementById("age").value;
+          const output = document.getElementById("output");
+
+          // Initialize output message
+          let message = "";
+
+          // Check if userName contains letters
+          if (userName) {
+            // Capitalizes the first letter of userName.
+            const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1);
+            message += `My name is "${capitalizedUserName}". `;
+          }
+
+          // Check if age contains numbers
+          if (age) {
+            message += `I'm ${age} years old.`;
+          }
+
+          output.innerText = message.trim();
+        }
+    </script>
+  </body>
+</html>
